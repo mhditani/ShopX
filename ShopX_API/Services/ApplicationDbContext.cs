@@ -13,5 +13,10 @@ namespace ShopX_API.Services
 
         public DbSet<Product> Products { get; set; }
 
+        public DbSet<Subject> Subjects  { get; set; }
+
+   
+
+
     }
 }

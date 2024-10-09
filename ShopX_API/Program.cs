@@ -17,6 +17,9 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
+// add SendGgrid
+builder.Services.AddScoped<EmailSender>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

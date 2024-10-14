@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ShopX_API.Models;
@@ -185,7 +186,7 @@ namespace ShopX_API.Controllers
 
 
 
-
+        [Authorize(Roles = "admin")]
         [HttpPost]
         public async Task<IActionResult> CreateProduct([FromForm]ProductDto productDto)
         {
@@ -248,7 +249,7 @@ namespace ShopX_API.Controllers
 
 
 
-
+        [Authorize(Roles = "admin")]
         [HttpPut, Route("{id:int}")]
         public async Task<IActionResult> UpdateProduct([FromRoute] int id, [FromForm]ProductDto productDto)
         {
@@ -306,7 +307,7 @@ namespace ShopX_API.Controllers
 
 
 
-
+        [Authorize(Roles = "admin")]
         [HttpDelete, Route("{id:int}")]
         public async Task<IActionResult> DeleteProduct([FromRoute]int id)
         {

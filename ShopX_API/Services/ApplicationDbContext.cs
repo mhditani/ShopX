@@ -15,8 +15,13 @@ namespace ShopX_API.Services
 
         public DbSet<Subject> Subjects  { get; set; }
 
-   
+        public DbSet<User> Users { get; set; }
 
 
+        public DbSet<ResetPassword> ResetPasswords { get; set; }
+
+        public DbSet<OrderItem> OrderItems  { get; set; }
+
+        public DbSet<Order> Orders { get; set; }
     }
 }

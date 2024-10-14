@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ShopX_API.Models;
@@ -40,7 +41,7 @@ namespace ShopX_API.Controllers
 
 
 
-
+        [Authorize(Roles = "admin")]
         [HttpGet]
         public async Task<IActionResult> GetContacts(int? page)
         {
@@ -74,7 +75,7 @@ namespace ShopX_API.Controllers
         }
 
 
-
+        [Authorize(Roles = "admin")]
         [HttpGet, Route("{id:int}")]
         public async Task<IActionResult> GetContact([FromRoute]int id)
         {
@@ -144,7 +145,7 @@ namespace ShopX_API.Controllers
 
 
 
-
+        /*
         [HttpPut, Route("{id:int}")]
         public async Task<IActionResult> UpdateContact([FromRoute] int id,[FromBody]ContactDto contactDto)
         {
@@ -172,6 +173,7 @@ namespace ShopX_API.Controllers
             return Ok(contact);
 
         }
+        */
 
 
 
@@ -180,8 +182,7 @@ namespace ShopX_API.Controllers
 
 
 
-
-
+        [Authorize(Roles = "admin")]
         [HttpDelete, Route("{id:int}")]
         public async Task<IActionResult> DeleteContact([FromRoute] int id)
         {
